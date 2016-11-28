@@ -24,6 +24,12 @@ var TaskListView = Backbone.View.extend({
       });
       this.cardList.push(card);
     }, this); // bind `this` so it's available inside forEach
+
+      // Keep track of our form input fields
+  this.input = {
+    title: this.$('.new-task input[name="title"]'),
+    description: this.$('.new-task input[name="description"]')
+  };
   },
 
   render: function() {
@@ -41,7 +47,18 @@ var TaskListView = Backbone.View.extend({
     }, this);
 
     return this; // enable chained calls
-  }
+  },
+
+    events: {
+    'click .clear-button': 'clearInput'
+  },
+
+  clearInput: function(event) {
+
+  this.input.title.val('');
+  this.input.description.val('');
+}
+
 });
 
 // task_list_view.js
