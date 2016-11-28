@@ -1,4 +1,7 @@
 import $ from 'jquery';
+import _ from 'underscore';
+import Backbone from 'backbone';
+import TaskListView from 'app/views/task_list_view';
 
 var taskData = [
   {
@@ -13,6 +16,14 @@ var taskData = [
   }
 ];
 
+
+
+
+
 $(document).ready(function() {
-  $('#test-area').append($('<p>Hello World!</p>'));
+  var application = new TaskListView({
+    el: $('#application'),
+    taskData: taskData
+  });
+  application.render();
 });
