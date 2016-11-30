@@ -7,12 +7,18 @@ var Task = Backbone.Model.extend({
     title: "Unknown Task",
     description: "placeholder description"
   },
+
   initialize: function() {
     console.log("Created new task with title " + this.title);
-  }; //initialize end
+  }, //initialize end
 
+
+//if task is complete, mark complete, if not, mark incomplete
+
+  toggleComplete: function() {
+  	var newStatus = !this.get('complete');
+  	this.set('complete', newStatus);
+  } //toggleComplete end
 }); //Task end
-
-
 
 export default Task;

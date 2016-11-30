@@ -1,6 +1,6 @@
 import $ from 'jquery';
-import _ from 'underscore';
-import Backbone from 'backbone';
+
+import TaskList from 'app/collections/task_list';
 import TaskListView from 'app/views/task_list_view';
 
 var taskData = [
@@ -14,16 +14,13 @@ var taskData = [
     title: 'Tune the Piano',
     description: 'High C is missing or something???'
   }
-]; //taskData end
-
-
-
-
+];
 
 $(document).ready(function() {
+  var taskList = new TaskList(taskData);
   var application = new TaskListView({
     el: $('#application'),
-    taskData: taskData
+    model: taskList
   });
   application.render();
 });
